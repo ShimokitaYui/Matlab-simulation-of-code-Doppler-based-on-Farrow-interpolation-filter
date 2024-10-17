@@ -1,12 +1,13 @@
-# Matlab-simulation-of-code-Doppler-based-on-Farrow-interpolation-filter# 拉格朗日Farrow滤波器与码多普勒模拟
+# Matlab-simulation-of-code-Doppler-based-on-Farrow-interpolation-filter
+# 拉格朗日Farrow滤波器与码多普勒模拟
 ## 重采样过程
 ### 目标
 - 原始信号: $x(m)$ 采样周期: $T_s$
 - 目标信号: $y(k)$ 采样周期: $T_i$
 ### 步骤
-1. $$x(t)$$ 采样至$$x(mT_s)$$
-2. $$x(mTs)$$数模转换变为$$y(t)$$ :$$y(t)=\sum_m{x(mT_s)h(t-mT_s)}$$
-3. $$y(t)$$采样至: $$y(kT_i)$$: $$y(kT_i)=\sum_m{x(mT_s)h(kT_i-mT_s)}$$
+1. $x(t)$ 采样至$x(mT_s)$
+2. $x(mTs)$数模转换变为$y(t)$ : $y(t)=\sum_m{x(mT_s)h(t-mT_s)}$
+3. $y(t)$采样至: $y(kT_i)$: $y(kT_i)=\sum_m{x(mT_s)h(kT_i-mT_s)}$
 ## Farrow算法
 ### 变量定义
 $kT_i-mT_s=Ts(k\frac{T_i}{T_s}-m)=Ts(i+\mu_k)$  
