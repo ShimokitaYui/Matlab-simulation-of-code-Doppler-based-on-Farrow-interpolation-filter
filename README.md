@@ -15,25 +15,25 @@ $kT_i-mT_s=Ts(k\frac{T_i}{T_s}-m)=Ts(i+\mu_k)$
 - $\mu_k=k\frac{Ti}{Ts}-m_k$
 - $i=m_k-m$
 ### 算法表达式
-理想滤波器:  
-$$y(kT_i)=\sum_i{x\left[(m_k-i)T_s\right]h\left[(i + \mu_k)T_s\right]}$$
-由于插值用的点数不可能是无穷的所以可以得到实际有限点滤波器表达如下所示:
-$$y(kT_i)=\sum_{i=I_1}^{I_2}{x\left[(m_k-i)T_s\right]h\left[(i + \mu_k)T_s\right]}$$
+理想滤波器:    
+$$y(kT_i)=\sum_i{x\left[(m_k-i)T_s\right]h\left[(i + \mu_k)T_s\right]}$$  
+由于插值用的点数不可能是无穷的所以可以得到实际有限点滤波器表达如下所示:  
+$$y(kT_i)=\sum_{i=I_1}^{I_2}{x\left[(m_k-i)T_s\right]h\left[(i + \mu_k)T_s\right]}$$  
 ## 拉格朗日多项式插值
-拉格朗日插值法表达式:
-$$L_n(x)=\sum_{j=0}^{n-1}{y_ip_j(x)}$$
-$$p_j(x)=\prod_{i \in B_k(i\ne k)}{\frac{x-x_i}{x_k-x_i}}$$
-采样拉格朗日插值法来代替Farrow中的滤波器系数。当$t\in \left[m_kT_s, (m_k+1)T_s\right]$时,利用$m_k$周围的点进行拉格朗日插值法得到一下表达式:
-$$y(t)=\sum_{i=I_1}^{I_2}C_ix\left[m_k-i\right]=\sum_{i=I_1}^{I_2}C_ix((m_k-i)T_s)$$
-根据拉格朗日插值法可以得到$C_i$:
+拉格朗日插值法表达式:  
+$$L_n(x)=\sum_{j=0}^{n-1}{y_ip_j(x)}$$  
+$$p_j(x)=\prod_{i \in B_k(i\ne k)}{\frac{x-x_i}{x_k-x_i}}$$  
+采样拉格朗日插值法来代替Farrow中的滤波器系数。当$t\in \left[m_kT_s, (m_k+1)T_s\right]$时,利用$m_k$周围的点进行拉格朗日插值法得到一下表达式:  
+$$y(t)=\sum_{i=I_1}^{I_2}C_ix\left[m_k-i\right]=\sum_{i=I_1}^{I_2}C_ix((m_k-i)T_s)$$  
+根据拉格朗日插值法可以得到$C_i$:  
 $$C_i=h(i+\mu_k)=\prod_{j=I_1,j\ne i}^{I_2}{\frac{t-t_j}{t_i-t_j}}$$
-将Farrow的变量带入可以得到:
-$$C_i(\mu_k)=\prod_{j=I_1,j\ne i}^{I_2}{\frac{j+\mu_k}{j-i}}$$
-因此当I固定时可以得到固定的系数,当点数为4时可以得到系数为:
-$$C_{-2}=\frac{1}{6}\mu_k^3-\frac{1}{6}\mu_k$$
-$$C_{-1}=-\frac{1}{2}\mu_k^3+\frac{1}{2}\mu_k^2+\mu_k$$
-$$C_{0}=\frac{1}{2}\mu_k^3-\mu_k^2-\frac{1}{2}\mu_k+1$$
-$$C_{1}=-\frac{1}{6}\mu_k^3+\frac{1}{2}\mu^2-\frac{1}{3}\mu_k$$
+将Farrow的变量带入可以得到:    
+$$C_i(\mu_k)=\prod_{j=I_1,j\ne i}^{I_2}{\frac{j+\mu_k}{j-i}}$$  
+因此当I固定时可以得到固定的系数,当点数为4时可以得到系数为:  
+$$C_{-2}=\frac{1}{6}\mu_k^3-\frac{1}{6}\mu_k$$  
+$$C_{-1}=-\frac{1}{2}\mu_k^3+\frac{1}{2}\mu_k^2+\mu_k$$  
+$$C_{0}=\frac{1}{2}\mu_k^3-\mu_k^2-\frac{1}{2}\mu_k+1$$  
+$$C_{1}=-\frac{1}{6}\mu_k^3+\frac{1}{2}\mu^2-\frac{1}{3}\mu_k$$  
 ## 码多普勒模拟
 使用拉格朗日Farrow滤波器进行码多普勒仿真,首先需要对原始信号进行高采样点数的上采样,对原始信号的采样点进行插值抽取获得目标码率的信号。下面是matlab仿真程序:
 ```matlab
